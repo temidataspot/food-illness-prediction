@@ -1,26 +1,26 @@
-# Load required libraries
+# Loading required libraries
 library(readxl)
 library(dplyr)
 library(forecast)
 library(lubridate)
 library(tidyr)
 
-# Load the data
+# Loading the data
 food_outbreaks <- read_excel("food_outbreaks.xlsx")
 
-# Clean the data - remove Unknown values for consistency
+# Cleaning the data - removing Unknown values for consistency
 food_outbreaks_clean <- food_outbreaks %>%
   filter(!grepl("Unknown", Food, ignore.case = TRUE)) %>%
   filter(!grepl("Unknown", Toxin, ignore.case = TRUE))
 
-# Convert Month to proper format and create Date column
+# Converting Month to proper format and create Date column
 food_outbreaks_clean <- food_outbreaks_clean %>%
   mutate(
     Month_Num = match(Month, month.name),
     Date = as.Date(paste(Year, Month_Num, "01", sep = "-"))
   )
 
-# Create illness data aggregated by state, year, month
+# Creating illness data aggregated by state, year, month
 illness_by_state_month <- food_outbreaks_clean %>%
   group_by(State, Year, Month, Date) %>%
   summarise(
@@ -30,7 +30,7 @@ illness_by_state_month <- food_outbreaks_clean %>%
   ) %>%
   arrange(State, Date)
 
-# Get list of states
+# Getting list of states
 states_list <- unique(food_outbreaks_clean$State)
 cat("Number of states:", length(states_list), "\n")
 
