@@ -1,12 +1,11 @@
-# Load required libraries (assuming already loaded)
+# already loaded libraries
 # library(readxl)
 # library(dplyr)
 # library(forecast)
 # library(lubridate)
 # library(tidyr)
 
-# Load and clean data (assuming food_outbreaks_clean is already available)
-# If not, uncomment the following:
+# Load and clean data  - done this already. check prev.files
 # food_outbreaks <- read_excel("food_outbreaks.xlsx")
 # food_outbreaks_clean <- food_outbreaks %>%
 #   filter(!grepl("Unknown", Food, ignore.case = TRUE)) %>%
@@ -16,11 +15,11 @@
 #     Date = as.Date(paste(Year, Month_Num, "01", sep = "-"))
 #   )
 
-# Get list of all unique foods
+# Getting list of all unique foods
 all_foods <- unique(food_outbreaks_clean$Food)
 cat("Total unique foods:", length(all_foods), "\n")
 
-# Function to create food time series by state
+# creating a function for food time series by state
 create_food_ts_by_state <- function(data) {
   # Create monthly food occurrence data by state
   food_state_monthly <- data %>%
@@ -186,7 +185,6 @@ for(state in states_list) {
 
 cat("Total state-food models built:", processed_combinations, "\n")
 
-# Function to make future predictions for food models
 # Fixed Function to make future predictions for food models
 make_food_predictions <- function(food_state_models, h = 132) {
   predictions <- list()
@@ -288,8 +286,8 @@ future_dates <- seq.Date(from = as.Date("2016-01-01"),
                          by = "month")
 
 # Function to create food prediction data frame for Shiny app
-# Let's debug and fix the food prediction creation
-# First, let's check what's in our food_predictions_2016_2026
+# debug and fix the food prediction creation
+# First, i'll check what's in my food_predictions_2016_2026
 
 cat("Number of food predictions:", length(food_predictions_2016_2026), "\n")
 
@@ -341,7 +339,7 @@ create_food_prediction_df <- function(food_predictions, future_dates) {
         }
       }
       
-      # Ensure we have the right length (132 months for 2016-2026)
+      # Ensure I have the right length (132 months for 2016-2026)
       target_length <- length(future_dates)
       
       # Extend or truncate to target length
@@ -379,7 +377,7 @@ create_food_prediction_df <- function(food_predictions, future_dates) {
 # Try creating the food prediction data frame again
 food_predictions_df <- create_food_prediction_df(food_predictions_2016_2026, future_dates)
 
-# Check the result
+# Checking the result
 cat("Food predictions data frame created with", nrow(food_predictions_df), "rows\n")
 
 if(nrow(food_predictions_df) > 0) {
@@ -484,7 +482,7 @@ for(key in names(food_state_models)) {
         ets_rmse <- NA
       }
       
-      # Only add if we have valid metrics
+      # Only add if i have valid metrics
       if(!is.na(arima_mae) && !is.na(ets_mae)) {
         # Create performance rows
         arima_perf <- data.frame(
