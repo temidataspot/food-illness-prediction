@@ -1,4 +1,4 @@
-# Load required libraries (assuming already loaded)
+# Loading required libraries 
 # Get list of all unique toxins
 all_toxins <- unique(food_outbreaks_clean$Toxin)
 cat("Total unique toxins:", length(all_toxins), "\n")
@@ -17,8 +17,8 @@ create_toxin_ts_by_state <- function(data) {
 # Create toxin occurrence data by state
 toxin_occurrences_by_state <- create_toxin_ts_by_state(food_outbreaks_clean)
 
-# Focus on the most common toxins to make this manageable
-# Get top toxins by total occurrences
+# Focusing on the most common toxins to make this manageable
+# Getting top toxins by total occurrences
 top_toxins_by_state <- toxin_occurrences_by_state %>%
   group_by(Toxin) %>%
   summarise(total_count = sum(count), .groups = 'drop') %>%
