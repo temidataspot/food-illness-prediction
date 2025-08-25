@@ -1,4 +1,5 @@
-# Save this as app.R
+# app.R
+# loading libs
 library(shiny)
 library(shinydashboard)
 library(plotly)
