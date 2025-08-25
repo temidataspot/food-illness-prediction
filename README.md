@@ -34,7 +34,7 @@ The project uses time series forecasting models trained on historical food outbr
 - **[app.R](app.R)** - Main Shiny dashboard application
 - **[deploy_app.R](https://github.com/temidataspot/food-illness-prediction/blob/main/deploy_app.R)** - Web deployment to Shiny
 - **[CSVs](https://github.com/temidataspot/food-illness-prediction/tree/main/CSVs-Predictions_Performance)** - Folder containing all prediction data files
-- **[scripts/](https://github.com/temidataspot/food-illness-prediction/tree/main/R-Scripts)** - Analysis scripts for model building
+- **[scripts](https://github.com/temidataspot/food-illness-prediction/tree/main/R-Scripts)** - Analysis scripts for model building
 - **[RDS]([docs/](https://github.com/temidataspot/food-illness-prediction/tree/main/RDS-Files))** - RDS Files
   
 ## Usage
@@ -75,7 +75,7 @@ Time series showing predicted illness counts over the forecast period.
 
 - **[food_analysis.R](https://github.com/temidataspot/food-illness-prediction/blob/main/R-Scripts/Food_model.R)** - Food prediction modeling script
 - **[toxin_analysis.R](https://github.com/temidataspot/food-illness-prediction/blob/main/R-Scripts/Toxin_model.R)** - Toxin prediction modeling script
-- **[illness_analysis.R]([scripts/illness_analysis.R](https://github.com/temidataspot/food-illness-prediction/blob/main/R-Scripts/Illness_model.R)** - Illness prediction modeling script
+- **[illness_analysis.R](https://github.com/temidataspot/food-illness-prediction/blob/main/R-Scripts/Illness_model.R)** - Illness prediction modeling script
 
 ## 🤝 Contributing
 
